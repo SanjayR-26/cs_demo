@@ -22,9 +22,9 @@ if "messages" not in st.session_state.keys(): # Initialize the chat message hist
 
 @st.cache_resource(show_spinner=False)
 def load_data():
-    with st.spinner(text="Loading and indexing the Streamlit docs – hang tight! This should take 1-2 minutes."):
+    with st.spinner(text="Loading and indexing the Jackgroup docs – hang tight! This should take 1-2 minutes."):
         if os.path.exists("data/stored"):   
-            storage_context = StorageContext.from_defaults(persist_dir="data/stored")
+            storage_context = StorageContext.from_defaults(persist_dir="data/stored", embed_model=embed_model)
             index = load_index_from_storage(storage_context)
         else:  
             os.mkdir("data/stored")  
