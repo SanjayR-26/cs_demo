@@ -24,8 +24,8 @@ if "messages" not in st.session_state.keys(): # Initialize the chat message hist
 def load_data():
     with st.spinner(text="Loading and indexing the Jackgroup docs – hang tight! This should take 1-2 minutes."):
         if os.path.exists("data/stored"):   
-            storage_context = StorageContext.from_defaults(persist_dir="data/stored", embed_model=embed_model)
-            index = load_index_from_storage(storage_context)
+            storage_context = StorageContext.from_defaults(persist_dir="data/stored")
+            index = load_index_from_storage(storage_context, embed_model=embed_model)
         else:  
             os.mkdir("data/stored")  
             data = SimpleDirectoryReader(input_dir="data/", recursive=True).load_data()
